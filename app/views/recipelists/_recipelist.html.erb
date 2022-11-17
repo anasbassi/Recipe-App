@@ -1,0 +1,24 @@
+<% if recipelist.user == current_user%>
+<div id="<%= dom_id recipelist %>">
+  <p>
+    <strong>Name:</strong>
+    <%= recipelist.name %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= recipelist.description %>
+  </p>
+   <p>
+    <strong>Preparation Time:</strong>
+    <%= recipelist.preparation_time%>
+  </p>
+   <p>
+    <strong>Cooking Time:</strong>
+    <%= recipelist.cooking_time %>
+  </p>
+   <p>
+    <strong>Public:</strong>
+    <%= recipelist.public %>
+  </p>
+</div>
+<%end%>

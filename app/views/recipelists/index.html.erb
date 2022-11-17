@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Recipelists</h1>
+
+
+<div id="recipelists">
+  <% @recipelists.each do |recipelist| %>
+    <div id="<%= dom_id recipelist %>">
+  <p>
+    <strong>Name:</strong>
+    <%= recipelist.name %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= recipelist.description %>
+  </p>
+</div>
+    <p>
+      <%= link_to "Show this recipelist", recipelist %>
+    </p>
+  <% end %>
+</div>
+
+
+<%= link_to "New recipelist", new_recipelist_path %>

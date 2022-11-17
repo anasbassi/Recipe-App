@@ -1,0 +1,22 @@
+require 'rails_helper'
+
+RSpec.describe "recipelists/show", type: :view do
+  before(:each) do
+    assign(:recipelist, Recipelist.create!(
+      name: "Name",
+      preparation_time: "Preparation Time",
+      cooking_time: "Cooking Time",
+      description: "Description",
+      public: false
+    ))
+  end
+
+  it "renders attributes in <p>" do
+    render
+    expect(rendered).to match(/Name/)
+    expect(rendered).to match(/Preparation Time/)
+    expect(rendered).to match(/Cooking Time/)
+    expect(rendered).to match(/Description/)
+    expect(rendered).to match(/false/)
+  end
+end

@@ -1,0 +1,19 @@
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/bundler/gems/ffi-e6311548e4dc/ext/ffi_c
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20221117-485734-yukjta.rb extconf.rb
+checking for ffi.h... no
+checking for ffi.h in /usr/local/include,/usr/include/ffi,/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi... no
+checking for whether -Wl,--exclude-libs,ALL is accepted as LDFLAGS... yes
+checking for whether -pthread is accepted as LDFLAGS... yes
+creating extconf.h
+creating Makefile
+
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/bundler/gems/ffi-e6311548e4dc/ext/ffi_c
+make DESTDIR\= clean
+
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/bundler/gems/ffi-e6311548e4dc/ext/ffi_c
+make DESTDIR\=
+Running autoreconf for libffi
+/home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/bundler/gems/ffi-e6311548e4dc/ext/ffi_c/libffi/autogen.sh: 2: exec: autoreconf: not found
+make: *** [libffi.mk:7: "/home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/bundler/gems/ffi-e6311548e4dc/ext/ffi_c/libffi-x86_64-linux-gnu"/.libs/libffi_convenience.a] Error 127
+
+make failed, exit code 2
