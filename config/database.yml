@@ -17,11 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  # port:  5432
-  port:  5000 
+  port:  5432
+  # port:  5000
   username: postgres
-  # password: ea.esmat123
-  password: bassi1234
+  password: ea.esmat123
+  # password: bassi1234
   host: localhost
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
