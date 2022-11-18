@@ -1,6 +1,8 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @foods = current_user.foods
+    @foods = Food.all
   end
 
   def new
@@ -9,34 +11,23 @@ class FoodsController < ApplicationController
 
   def create
     food = current_user.foods.new(food_params)
-
-    if food.save
-      redirect_to foods_path, notice: 'New Food was successfully added.'
-    else
-      flash[:alert] = 'New Food adding Failed. Please try again.'
+    respond_to do |format|
+      format.html do
+        if food.save
+          flash[:notice] = 'Food was saved successfully.'
+          redirect_to foods_path
+        else
+          flash.now[:alert] = 'There was an error Creating the food. Please try again.'
+          render :new
+        end
+      end
     end
-  end
-
-  def destroy
-    food = Food.find(params[:id])
-
-    unless food.user == current_user
-      flash[:alert] =
-        'You do not have access to delete the Food belongs to other Users.'
-    end
-
-    if food.destroy
-      flash[:notice] = 'Food was successfully deleted.'
-    else
-      flash[:alert] = 'Food deleting Failed. Please try again.'
-    end
-    redirect_back(fallback_location: root_path)
   end
 
   def general
     @foods = current_user.foods
     current_user.recipes.map do |recipe|
-      recipe.recipe_foods.includes(:food).map do |recipe_food|
+      recipe.recipe_foods.map do |recipe_food|
         food = recipe_food.food
         test = @foods.select { |f| f.name == food.name }[0]
         test.quantity = test.quantity - recipe_food.quantity
@@ -48,6 +39,16 @@ class FoodsController < ApplicationController
     @foods.each do |food|
       @total += (food.price * food.quantity)
     end
+  end
+
+  def destroy
+    @food = Food.find(params[:id])
+    if @food.destroy
+      flash[:notice] = 'Food was deleted successfully.'
+    else
+      flash.now[:alert] = 'There was an error deleting the food.'
+    end
+    redirect_to foods_path
   end
 
   private
