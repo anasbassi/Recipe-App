@@ -6,6 +6,12 @@
         <%= link_to "Foods", foods_path %>
       </li>
       <li class="nav-item">
+        <%= link_to "Recipes", recipes_path %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "General Shopping List", foods_path %>
+      </li>
+      <li class="nav-item">
         <%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link" %>
       </li>
     <% end %>
