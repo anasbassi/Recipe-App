@@ -33,6 +33,14 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@anasabu92568449](https://twitter.com/anasabu92568449)
 - LinkedIn: [Anas Abubakar](https://www.linkedin.com/in/anas-abubakar-bassi/)
 
+
+
+👤 **Esmatullah Ahmadzai (Esmat)**
+
+- GitHub: [@Esmatullah Ahamdzai](https://github.com/eaesmat)
+- Twitter: [@Esmatullah Ahamdzai](https://twitter.com/ea_ahmadzai)
+- LinkedIn: [@Esmatullah Ahamdzai](https://www.linkedin.com/in/esmatullah-ahmadzai)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
