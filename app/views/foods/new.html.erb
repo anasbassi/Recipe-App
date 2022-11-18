@@ -2,24 +2,24 @@
 <div>
   <%= form_with model: @food do |form| %>
     <h2>Add a New Food</h2>
-    <div>
+    <div class="mb-3">
       <%= form.label :name, "Name" %>
       <%= form.text_field :name, placeholder: "Name", required: true, autofocus: true %>
     </div>
-    <div>
+    <div class="mb-3">
       <%= form.label :quantity, "Quantity" %>
       <%= form.number_field :quantity, placeholder: 0, required: true, autofocus: true %>
     </div>
-    <div>
+    <div class="mb-3">
       <%= form.label :measurement_unit, "Measurement Unit" %>
       <%= form.text_field :measurement_unit, placeholder: "kg", required: true, autofocus: true %>
     </div>
-    <div>
+    <div class="mb-3">
       <%= form.label :price, "Price" %>
       <%= form.number_field :price, placeholder: 100, required: true, autofocus: true %>
     </div>
     <div>
-      <%= form.submit "Add Food", data: { disable_with: "Loading" } %>
+      <%= form.submit "Add Food", data: { disable_with: "Loading" }, class:"btn btn-primary" %>
     </div>
   <% end %>
 </div>
