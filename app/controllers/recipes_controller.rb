@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
 
     unless recipe.user == current_user
       return flash[:alert] =
-              'You do not have access to delete the Recipe belongs to other Users.'
+               'You do not have access to delete the Recipe belongs to other Users.'
     end
 
     if recipe.destroy
