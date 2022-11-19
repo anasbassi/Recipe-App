@@ -1,37 +1,61 @@
-<section class='food-section'> 
-  <h1 class="heading"> All Foods</h1>
+<%= stylesheet_link_tag "food-index.css" %>
 
-  <div class="btn-div">
-    <%= link_to "Add food", new_food_path, class:"btn-add" %>
-  </div>
+<p style="color: green"><%= notice %></p>
 
-<div class="listDiv">
-   <table class="table tab">
-    <thead>
+<h2>Foods</h2>
+
+<% if @foods.empty? %>
+  <h3>No foods found.</h3>
+  <p class="content-buttons"><%= link_to "New food", new_food_path %></p>
+<% else %>
+  <div id="foods">
+    <table>
+      <th>
+        <p>
+          <strong>Name</strong>
+        </p>
+      </th>
+      <th>
+        <p>
+          <strong>Measurement unit</strong>
+        </p>
+      </th>
+      <th>
+        <p>
+          <strong>Price</strong>
+        </p>
+      </th>
+      <th>
+        <p>
+          <strong>Quantity</strong>
+        </p>
+      </th>
+      <th>
+        <p>
+          <strong>Actions</strong>
+        </p>
+      </th>
+      <% @foods.each do |food| %>
         <tr>
-        <th >Food</th>
-        <th >Quantity</th>
-        <th>Measurement_Unit</th>
-        <th>Unit Price</th>
-        <th>Action</th>
+          <td>
+            <%= food.name %>
+          </td>
+          <td>
+            <%= food.measurement_unit %>
+          </td>
+          <td>
+            <%= food.price %>
+          </td>
+          <td>
+            <%= food.quantity %>
+          </td>
+          <% if can? :manage, food %>
+            <td>
+              <%= button_to "Delete", food, method: :delete %>
+            </td>
+          <% end %>
         </tr>
-    </thead>
-
-    <tbody>
-    <% @foods.each do |food|%>
-    <tr>
-      <td><%= food.name%></th>
-      <td><%= food.quantity%></th>
-      <td><%= food.measurement_unit%></td>
-      <td>$<%= food.price%></td>
-      <td>
-      <%if current_user == food.user%>
-        <%=link_to "Delete", food_path(food.id), data: { turbo_method: :delete,turbo_confirm: "Are you sure?"}, class:"btn-delete"%>
-      <%end%>
-      </td>
-    </tr>
-    <% end %>
-    </tbody>
-</table>
-</div>
-</section>
+      <% end %>
+    </table>
+  </div>
+<% end %>

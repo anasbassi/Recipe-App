@@ -1,0 +1,16 @@
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/gems/debug-1.6.2/ext/debug
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20221119-22318-z2sl69.rb extconf.rb
+creating Makefile
+
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/gems/debug-1.6.2/ext/debug
+make DESTDIR\= clean
+
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/gems/debug-1.6.2/ext/debug
+make DESTDIR\=
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/esmatullah-ahmadzai/Desktop/Microverse/Recipe-App/vendor/bundle/ruby/3.0.0/gems/debug-1.6.2/ext/debug
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20221119-22318-nyp4ss/debug

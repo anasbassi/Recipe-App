@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i[show edit update destroy]
+
   def index
     @users = User.all
-    @current_user = current_user
   end
 
-  def sign_out
-    sign_out_and_redirect(current_user)
+  def show; end
+
+  def create; end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
