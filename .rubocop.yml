@@ -2,13 +2,14 @@ AllCops:
   NewCops: enable
   Exclude:
     - "db/**/*"
-    - "bin/*" 
+    - "bin/*"
     - "config/**/*"
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
 
   DisplayCopNames: true
+
 
 Layout/LineLength:
   Max: 120
