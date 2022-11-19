@@ -1,59 +1,69 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_food, only: %i[show edit update destroy]
 
+  # GET /foods or /foods.json
   def index
     @foods = Food.all
   end
 
+  # GET /foods/1 or /foods/1.json
+  def show; end
+
+  # GET /foods/new
   def new
     @food = Food.new
   end
 
+  # GET /foods/1/edit
+  def edit; end
+
+  # POST /foods or /foods.json
   def create
-    food = current_user.foods.new(food_params)
+    @food = current_user.foods.new(food_params)
+
     respond_to do |format|
-      format.html do
-        if food.save
-          flash[:notice] = 'Food was saved successfully.'
-          redirect_to foods_path
-        else
-          flash.now[:alert] = 'There was an error Creating the food. Please try again.'
-          render :new
-        end
+      if @food.save
+        format.html { redirect_to food_url(@food), notice: 'Food was successfully created ✅😋.' }
+        format.json { render :show, status: :created, location: @food }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  def general
-    @foods = current_user.foods
-    current_user.recipes.map do |recipe|
-      recipe.recipe_foods.map do |recipe_food|
-        food = recipe_food.food
-        test = @foods.select { |f| f.name == food.name }[0]
-        test.quantity = test.quantity - recipe_food.quantity
+  # PATCH/PUT /foods/1 or /foods/1.json
+  def update
+    respond_to do |format|
+      if @food.update(food_params)
+        format.html { redirect_to food_url(@food), notice: 'Food was successfully updated. ✅' }
+        format.json { render :show, status: :ok, location: @food }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
       end
-    end
-    @foods = @foods.select { |f| f.quantity.negative? }
-    @foods.each { |f| f.quantity *= -1 }
-    @total = 0
-    @foods.each do |food|
-      @total += (food.price * food.quantity)
     end
   end
 
+  # DELETE /foods/1 or /foods/1.json
   def destroy
-    @food = Food.find(params[:id])
-    if @food.destroy
-      flash[:notice] = 'Food was deleted successfully.'
-    else
-      flash.now[:alert] = 'There was an error deleting the food.'
+    @food.destroy
+
+    respond_to do |format|
+      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed. ✅' }
+      format.json { head :no_content }
     end
-    redirect_to foods_path
   end
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_food
+    @food = Food.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
   def food_params
-    params.require(:food).permit(:name, :quantity, :measurement_unit, :price)
+    params.require(:food).permit(:name, :measurement_unit, :price, :quantity, :user_id)
   end
 end
